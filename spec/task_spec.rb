@@ -38,4 +38,12 @@ describe(Task) do
     end
   end
 
+  describe(".all") do
+    it("returns an array of tasks sorted by their due date") do
+      test_task_one = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2016-06-15'})
+      test_task_two = Task.new({:description => "learn Ruby", :list_id => 2, :due_date => '2016-06-12'})
+      expect(ordered_tasks.all()).to(eq([test_task_two, test_task_one]))
+    end
+  end
+
 end
