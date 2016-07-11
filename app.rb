@@ -3,6 +3,7 @@ require('sinatra/reloader')
 also_reload('lib/**/*.rb')
 require('./lib/task')
 require('pg')
+require('pry')
 
 DB = PG.connect({:dbname => "to_do"})
 
@@ -13,6 +14,7 @@ end
 
 post('/results') do
   description = params.fetch("description")
+  binding.pry
   task = Task.new(description)
   task.save()
   erb(:success)
