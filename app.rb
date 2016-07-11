@@ -8,14 +8,16 @@ require('pry')
 DB = PG.connect({:dbname => "to_do"})
 
 get('/') do
-  @tasks = Task.all()
   erb(:index)
 end
 
-post('/results') do
-  description = params.fetch("description")
-  binding.pry
-  task = Task.new(description)
-  task.save()
-  erb(:success)
+get('/lists/new') do
+  erb(:list_form)
+end
+
+post('/lists') do
+  name = params.fetch("name")
+  lists = List.new({:name => name, :id => nil})
+  list.save()
+  erb(:list_success)
 end
