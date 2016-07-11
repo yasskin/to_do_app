@@ -21,3 +21,8 @@ post('/lists') do
   list.save()
   erb(:list_success)
 end
+
+get('/lists') do
+  @lists = List.all()
+  erb(:lists)
+end
